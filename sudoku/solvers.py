@@ -36,3 +36,4 @@ def solveConstraintPropagation(grid) -> list[list[int]]:
 
 def solveHeuristic(grid) -> list[list[int]]:
     pass
+This is deliberately brokengit status
