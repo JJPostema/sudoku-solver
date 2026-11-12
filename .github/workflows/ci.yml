@@ -1,0 +1,29 @@
+name: Sudoku CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    runs-on: docker
+
+    steps:
+      - name: Check out repository
+        uses: https://data.forgejo.org/actions/checkout@v6
+
+      - name: Install Python
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends python3
+
+      - name: Check Python version
+        run: python3 --version
+
+      - name: Compile Python files
+        run: python3 -m compileall -q main.py sudoku
+
+      - name: Run Sudoku solver
+        run: python3 main.py
